@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<script type="text/javascript">
+function check() {
+	var uid = document.getElementById("pid");
+	var passwd = document.getElementById("ppasswd");
+	if (uid.value == "")
+	{
+		alert("아이디를 입력해주세요!");
+		return;
+	}
+	if (ppasswd.value == "")
+	{
+		alert("비밀번호를 입력해주세요!");
+		return;
+	}
+	
+	rform.submit();
+	
+	/* var uid = pid.value;
+	if(uid.length < 3 || uid.length > 15)
+	{
+		alert("id 길이가 맞지 않습니다.");
+		uid.focus();
+		return;
+	}
+	rform.submit(); */
+}
+</script>
+</head>
+<body>
+	<form action="login.do" method="post" id = "rform">
+		<table>
+			<tr>
+			<td rowspan="5"><img alt="책 이미지" src="./images/book.JPG" style="width: 100px; height: auto;"></td>
+				<td colspan="2" align="right">로그인하여 주세요</td>
+			</tr>
+			<tr>
+
+			<tr>
+				<th style="text-align: right;">ID</th>
+				<td><input type="text" name="pid" id="pid"></td>
+			</tr>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="text" name="ppasswd" id="ppasswd"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" onclick="check()" value="Login"></td>
+			</tr>
+		</table>
+
+	</form>
+	<!-- <a href="login.html">Login</a> -->
+</body>
+</html>
