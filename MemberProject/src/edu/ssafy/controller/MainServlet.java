@@ -78,7 +78,7 @@ public class MainServlet extends HttpServlet {
 	private void deletemem(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("pid");
+		String id = request.getParameter("uid");
 		boolean del = man.delMem(id);
 		if (del) {
 			request.getRequestDispatcher("main.do?action=listmem").forward(request, response);
@@ -93,12 +93,10 @@ public class MainServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("pid");
 		String name = request.getParameter("pname");
-		String pw = request.getParameter("ppw");
-		String addr = request.getParameter("paddr");
-		int age = Integer.parseInt(request.getParameter("page"));
-		String tel = request.getParameter("ptel");
+		String quantity = request.getParameter("pquantity");
+		int price = Integer.parseInt(request.getParameter("pprice"));
 
-		boolean update = man.updateMem(id, name, pw, age, addr, tel);
+		boolean update = man.updateMem(id, name, quantity, price);
 
 		if (update) {
 			request.getRequestDispatcher("main.do?action=listmem").forward(request, response);
@@ -153,13 +151,11 @@ public class MainServlet extends HttpServlet {
 		// 2. 파라미터 처리
 		String id = request.getParameter("pid");
 		String name = request.getParameter("pname");
-		String pw = request.getParameter("ppw");
-		String addr = request.getParameter("paddr");
-		int age = Integer.parseInt(request.getParameter("page"));
-		String tel = request.getParameter("ptel");
+		String quantity = request.getParameter("pquantity");
+		int price = Integer.parseInt(request.getParameter("pprice"));
 
 		// 3. 업무 처리
-		boolean res = man.addMem(id, name, pw, age, addr, tel);
+		boolean res = man.addMem(id, name, quantity, price);
 
 		// 4. 출력처리
 		if (res) {

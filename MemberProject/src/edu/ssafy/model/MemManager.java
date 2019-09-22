@@ -22,9 +22,9 @@ public class MemManager {
 		return man;
 	}
 
-	public boolean addMem(String id, String name, String pw, int age, String addr, String tel)
+	public boolean addMem(String id, String name, String quantity, int price)
 	{
-		String str = "insert into memberweb(id, name, pw, age, addr, tel) values(?, ?, ?, ?, ?, ?)";
+		String str = "insert into productdb(id, name, quantity, price) values(?, ?, ?, ?)";
 		boolean res = false;
 		try {
 			conn = ConnectionProxy.getConnection();
@@ -32,10 +32,8 @@ public class MemManager {
 			st = conn.prepareStatement(str);
 			st.setString(1, id);
 			st.setString(2, name);
-			st.setString(3, pw);
-			st.setInt(4, age);
-			st.setString(5, addr);
-			st.setString(6, tel);
+			st.setString(3, quantity);
+			st.setInt(4, price);
 			res = st.execute();
 			res = true;
 		} catch (SQLException e) {
@@ -50,7 +48,7 @@ public class MemManager {
 	
 	public boolean delMem(String id)
 	{
-		String str = "delete from memberweb where id = ?";
+		String str = "delete from productdb where id = ?";
 		boolean res = false;
 		try {
 			conn = ConnectionProxy.getConnection();
@@ -68,19 +66,17 @@ public class MemManager {
 		return res;
 	}
 	
-	public boolean updateMem(String id, String name, String pw, int age, String addr, String tel)
+	public boolean updateMem(String id, String name, String quantity, int price)
 	{
-		String str = "update memberweb set name = ?, pw = ?, addr = ?, age = ?, tel = ? where id = ?";
+		String str = "update productdb set name = ?, pw = ?, quantity = ?, price = ? where id = ?";
 		boolean res = false;
 		try {
 			conn = ConnectionProxy.getConnection();
 			st = conn.prepareStatement(str);
-			st.setString(1, name);
-			st.setString(2, pw);
-			st.setString(3, addr);
-			st.setInt(4, age);
-			st.setString(5, tel);
-			st.setString(6, id);
+			st.setString(1, id);
+			st.setString(2, name);
+			st.setString(3, quantity);
+			st.setInt(4, price);
 			st.execute();
 			res = true;
 		} catch (SQLException e) {
@@ -94,7 +90,7 @@ public class MemManager {
 	
 	public ArrayList<MemVo> getList()
 	{
-		String q = "select * from memberweb";
+		String q = "select * from productdb";
 		ArrayList<MemVo> list = null;
 		try {
 			conn = ConnectionProxy.getConnection();
@@ -105,10 +101,8 @@ public class MemManager {
 				MemVo vo = new MemVo();
 				vo.setId(rs.getString("id"));
 				vo.setName(rs.getString("name"));
-				vo.setPw(rs.getString("pw"));
-				vo.setAge(rs.getInt("age"));
-				vo.setAddr(rs.getString("addr"));
-				vo.setTel(rs.getString("tel"));
+				vo.setQuantity(rs.getString("quantity"));
+				vo.setPrice(rs.getInt("price"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -122,7 +116,7 @@ public class MemManager {
 	
 	public MemVo memInfo(String id)
 	{
-		String q = "select * from memberweb where id = ?";
+		String q = "select * from productdb where id = ?";
 		MemVo vo = null;
 		try {
 			conn = ConnectionProxy.getConnection();
@@ -133,10 +127,8 @@ public class MemManager {
 				vo = new MemVo();
 				vo.setId(rs.getString("id"));
 				vo.setName(rs.getString("name"));
-				vo.setPw(rs.getString("pw"));
-				vo.setAge(rs.getInt("age"));
-				vo.setAddr(rs.getString("addr"));
-				vo.setTel(rs.getString("tel"));
+				vo.setQuantity(rs.getString("quantity"));
+				vo.setPrice(rs.getInt("price"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -168,7 +160,7 @@ public class MemManager {
 	
 	public ArrayList<MemVo> nameFind(String keyword) {
 		// TODO Auto-generated method stub
-		String q = "select * from memberweb";
+		String q = "select * from productdb";
 		ArrayList<MemVo> list = null;
 		try {
 			conn = ConnectionProxy.getConnection();
@@ -176,13 +168,12 @@ public class MemManager {
 			rs = st.executeQuery();
 			list = new ArrayList<>();
 			while(rs.next()) {
-				if(rs.getString("name").contains(keyword) || rs.getString("name") == "") {
+				if(rs.getString("id").contains(keyword) || rs.getString("id") == "") {
 					MemVo vo = new MemVo();
 					vo.setId(rs.getString("id"));
 					vo.setName(rs.getString("name"));
-					vo.setAge(rs.getInt("age"));
-					vo.setAddr(rs.getString("addr"));
-					vo.setTel(rs.getString("tel"));
+					vo.setQuantity(rs.getString("quantity"));
+					vo.setPrice(rs.getInt("price"));
 					list.add(vo);
 				}
 			}

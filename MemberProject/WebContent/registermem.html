@@ -29,30 +29,42 @@ table{
 </script>
 </head>
 <body>
-	<h1 align="center">회 원 등 록</h1>
+	<h1 align="center">상 품 등 록</h1>
 	<!--  #은 현재 페이지 -->
 	<form action="main.do?action=registmem" method="post" id="rform">
 		<table>
 			<tr>
-				<td>아이디: </td>
+				<td>상품번호: </td>
 				<td><input type="text" name="pid" id="pid"> </td>
 			</tr>
 			<tr>	
-				<td>이름: </td>
+				<td>상품명: </td>
 				<td><input type="text" name="pname" id="pname"> </td>
 			</tr>
+			<tr>
+				<td>수량: </td>
+				<td><input type="text" name="pquantity" id="pquantity"> </td>
+			</tr>
+			<tr>
+				<td>가격: </td>
+				<td><input type="number" name="pprice" id="pprice"> </td>
+			</tr>
+			<!-- <tr>
 				<td>비밀번호: </td>
 				<td><input type="password" name="ppw" id="ppw"> </td>
-			<tr>
+			</tr> -->
+			<!-- <tr>
 				<td>주소: </td>
 				<td><input type="text" name="paddr" id="paddr"> </td>
-			</tr>
+			</tr> -->
+			<!-- <tr>
 				<td>나이: </td>
 				<td><input type="number" name="page" id="page"> </td>
+			</tr>
 			<tr>
 				<td>전화번호: </td>
 				<td><input type="tel" name="ptel" id="ptel"> </td>
-			</tr>
+			</tr> -->
 				
 			<tr>
 				<td colspan="2"><input type="button" value="전송" onclick="check()"><input type="reset" value="clear"> </td>

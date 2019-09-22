@@ -3,64 +3,57 @@ package edu.ssafy.model;
 public class MemVo {
 	private String id;
 	private String name;
-	private String pw;
-	private String addr;
-	private int	age;
-	private String tel;
+	private String quantity;
+	private int price;
 	
 	public MemVo() {
 		super();
 	}
-		
-	public MemVo(String id, String name, String pw, String addr, int age, String tel) {
+
+	public MemVo(String id, String name, String quantity, int price) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.pw = pw;
-		this.addr = addr;
-		this.age = age;
-		this.tel = tel;
+		this.quantity = quantity;
+		this.price = price;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPw() {
-		return pw;
+
+	public String getQuantity() {
+		return quantity;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
-	public String getAddr() {
-		return addr;
+
+	public int getPrice() {
+		return price;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "MemManager [id=" + id + ", name=" + name + ", pw=" + pw + ", addr=" + addr + ", age=" + age + ", tel="
-				+ tel + "]";
+		return "MemVo [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + "]";
 	}
+		
+	
 }
