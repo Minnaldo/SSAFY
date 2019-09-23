@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<style type="text/css">
+body {
+	width: 250px;
+	margin: 0 30%;
+}
+
+table {
+	border: 3px solid #000;
+}
+</style>
+<script type="text/javascript">
+	function checkData() {
+		login.submit();
+	};
+</script>
+</head>
+<body>
+	<h1>로그인 화면</h1>
+	<form id="login" action="main.do?action=loginmem" method="post">
+		<table>
+			<tr>
+				<td style="text-align: right;">ID</td>
+				<td><input type="text" name="pid" id="pid"></td>
+			</tr>
+			<tr>
+				<td>PASSWORD</td>
+				<td><input type="password" name="ppw" id="ppw"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><hr style="margin:0;"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" onclick="checkData()" value="로그인"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

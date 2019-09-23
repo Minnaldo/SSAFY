@@ -1,10 +1,12 @@
 package edu.ssafy.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,10 +35,22 @@ public class MemberServlet extends HttpServlet {
 		if( action == null ||action.equals("main")) {
 			//메인페이지 메인페이지에는 모든 회원 리스트를 보여줍시다 :)
 			
-			//데이터베이스에서.. 모든 회원의 정보를 가져와서.. attribute에 싣고. main.jsp로 포워드하자.
+			////데이터베이스에서.. 모든 회원의 정보를 가져와서.. attribute에 싣고. main.jsp로 포워드하자.
 			List<MemberVO> memberList = memberManager.getMemberList();
+			Cookie[] cookies = req.getCookies();
+			List<String> visited = new ArrayList<String>();
+			if( cookies != null) {
+				for(Cookie c : cookies) {
+					if(!c.getName().equals("JSESSIONID"))
+						visited.add(c.getValue());
+				}
+				req.setAttribute("visited", visited);
+			}
+			
+			
 			req.setAttribute("memberList", memberList);
 			req.getRequestDispatcher("main.jsp").forward(req, resp);
+			
 		}
 		else if(action.equals("addMember")) {
 			//회원추가작업 해주고 메인으로

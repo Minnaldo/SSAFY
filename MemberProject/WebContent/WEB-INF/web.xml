@@ -2,7 +2,6 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>MemberProject</display-name>
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -20,4 +19,22 @@
     <servlet-name>MainServlet</servlet-name>
     <url-pattern>/main.do</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>KorCharsetFilter</display-name>
+    <filter-name>KorCharsetFilter</filter-name>
+    <filter-class>edu.ssafy.controller.KorCharsetFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>KorCharsetFilter</filter-name>
+    <url-pattern>/main.do</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>LoginCheck</display-name>
+    <filter-name>LoginCheck</filter-name>
+    <filter-class>edu.ssafy.controller.LoginCheck</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginCheck</filter-name>
+    <url-pattern>/main.do</url-pattern>
+  </filter-mapping>
 </web-app>

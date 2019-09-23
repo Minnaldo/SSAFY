@@ -12,7 +12,7 @@ public class ConnectionProxy {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // 2. 커넥션 연결
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/ssafydb?serverTimezone=UTC&useUniCode=yes&characterEncoding=UTF-8", "root",
+                    "jdbc:mysql://127.0.0.1:3306/ssafyweb?serverTimezone=UTC&useUniCode=yes&characterEncoding=UTF-8", "ssafy",
                     "ssafy");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
