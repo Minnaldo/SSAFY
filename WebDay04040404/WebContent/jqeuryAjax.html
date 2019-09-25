@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('button').on("click", function() {
+		$.ajax({
+			type : "post",
+			url : "data.jsp",
+			dataType : "xml",
+			success : succ,
+			error : err
+		});
+	});
+	
+	function succ(data) {
+		var name = $("name", data).text();
+		var age = $("age", data).text();
+
+		/* $("#dd").text(name+" "+age+" "+addr); */
+		
+		$("#op1").text(name);
+		$("#op2").text(age);
+	}
+	function err() {
+		
+	}
+})
+</script>
+</head>
+<body>
+	<button>눌러봐라</button>
+	<form action="main.do?action=calc" method="post">
+		<!-- <div id="dd">	</div> -->	
+		<div id="op1" >	</div>
+		<div id="op2" >	</div>
+		<input type = "submit" value="가자">
+	</form>
+</body>
+</html>
