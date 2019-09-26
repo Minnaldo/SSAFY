@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('button').on("click", function() {
+		$.ajax({
+			type : "post",
+			url : "data.jsp",	//직접 xml 주소 걸어도 되고, test.xml,  calc.jsp 
+			dataType :"xml",	//xml html json text
+			success : succ,	//실행되어 질 함수 적어주면 됨.
+			error :	err
+		});
+	});
+	
+	function succ(data) {
+		var name = $("name", data).text();		//data에서 "name"을 찾아서
+		var age = $("age", data).text();
+		var addr = $("addr", data).text();
+		$("#dd").text(name+", " + age + ", " + addr)
+	}
+	function err() {
+		
+	}
+})
+</script>
+</head>
+<body>
+	<button>눌러</button>
+	<div id="dd"/> 
+</body>
+</html>
