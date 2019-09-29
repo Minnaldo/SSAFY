@@ -13,41 +13,39 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	IService ser = new ServiceImpl();
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// TODO Auto-generated method stub
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		doGet(request, response);
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
 		String action = request.getParameter("action");
-		
 		if(action.equals("calc")) {
 			Calc(request, response);
+			
 		}
-		
 		
 	}
 
+
 	private void Calc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		String op1 = request.getParameter("op1");
+		String op2 = request.getParameter("op2");
 		
-		System.out.println("호출됐냐?");
-		String str =request.getParameter("op1");
-		System.out.println(str);
-		int num1 = Integer.parseInt(str);
-		int num2 = Integer.parseInt(request.getParameter("op2"));
+		ArrayList<Calc> calc = ser.calc(Integer.parseInt(op1), Integer.parseInt(op2));
 		
-		ArrayList<edu.ssafy.Calc> calc = ser.calc("1 235 458 9755");
-		
-		request.setAttribute("calc", calc);
-		
+		request.setAttribute("result", calc);
 		request.getRequestDispatcher("result.jsp").forward(request, response);
+		
+		
 	}
 
 }

@@ -9,44 +9,35 @@ $(function() {
 	$('button').on("click", function() {
 		$.ajax({
 			type : "post",
-			url : "data333.jsp",
+			url : "data.jsp",
 			dataType : "xml",
 			success : succ,
 			error : err
 		});
 	});
 	
-	function succ(data2) {
-		$("friend", data2).each(function(){
-			var name = $(this).find("name").text();
-			var age = $(this).find("age").text();
-
-			$("#op1").val(name);
-			$("#op2").val(age);
-			
-		})
-		
+	function succ(data) {
+		var name = $("name", data).text();
+		var age = $("age", data).text();
 
 		/* $("#dd").text(name+" "+age+" "+addr); */
 		
+		$("#op1").text(name);
+		$("#op2").text(age);
 	}
 	function err() {
 		
 	}
-	$("#aaa").on("click", function(){
-		rform.submit();
-	})
 })
 </script>
 </head>
 <body>
 	<button>눌러봐라</button>
-	<form action="main.do?action=calc" method="post" name="rform" id="in">
+	<form action="main.do?action=calc" method="post">
 		<!-- <div id="dd">	</div> -->	
-		<input id="op1" name="op1">	
-		<input id="op2" name="op2">	
-		<!-- <input type = "submit" value="가자"> -->
-		<input type="button" id="aaa" value="가자@@" onclick="aaa()">
+		<div id="op1" >	</div>
+		<div id="op2" >	</div>
+		<input type = "submit" value="가자">
 	</form>
 </body>
 </html>

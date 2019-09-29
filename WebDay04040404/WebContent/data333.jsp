@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/xml; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <friends>
+<friend>
+	<name>10</name>
+	<age>5</age>
+ </friend>
+ <friend>
+	<name>112340</name>
+	<age>1242415</age>
+ </friend>
+ <friend>
+	<name>110</name>
+	<age>23235</age>
+ </friend>
+ <friend>
+	<name>1012412512</name>
+	<age>5521521</age>
+ </friend>
+ <friend>
+	<name>1564560</name>
+	<age>sdvsdav5</age>
+ </friend>
+ </friends>
