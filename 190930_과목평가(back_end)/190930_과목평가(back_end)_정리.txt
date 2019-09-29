@@ -1,0 +1,78 @@
+page < request < session < application
+
+page : 그냥 현 페이지
+request : index -> mainservlet -> reulst.jsp  (결과페이지에 도착하면 끝)
+session : 같은 브라우저 내에서 요청되는
+
+
+================================================
+	Servlet(서블릿)
+쿠키 :  웹 브라우저(클라이언트)의 메모리?!! (하드디스크)
+	[클라이언트에 올려놓으면 사라질 수 있다.]
+세션 :  서버
+
+
+redirect : response 객체에서 호출.
+
+
+*선언식 (JSP의 스크립핑 요소(Scripting Element))
+-스크립틀릿
+ : <% java code %>
+
+-선언(Declaration)
+ : <%! 속성 선언 및 method 작성 %>
+   <%! 
+
+-표현식(Expression)
+ : <%= 출력값,변수,함수결과 %>
+
+Service Method 에
+:- 스크립틀릿, Expression은 서비스 메소드 중괄호 안에 들어간다.
+    => java code로 로직 작성.
+ - 선언(Declration)은 Class멤버변수(=전역변수)..
+   :선언부에 test함수를 선언했다.
+    => 속성 선언 및 함수(method) 작성.
+  이후 서비스 메소드에서 test함수를 구현했다.
+  그럼, local에 있는게 호출.
+
+jsp는 서블릿 / 서블릿은 서블릿 / 서블릿은 자바다.    
+
+
+
+***Directive(지시자) 태그***
+지시사태그's include 랑 jsp's action태그의 include의 차이
+
+**지시자 include(directive include)
+- <%@ include file=
+-Directive(지시자태그)는 @를 사용한다.
+ :내용이 텍스트로 포함되어 합쳐지고 컴파일된다.
+ -소스를 가져와서 한 화면에 출력한다.
+ -소스를 포함시키기 때문에 가져온 페이지의 변수도 인식한다.
+   =>두 페이지의 변수가 중복되면, 모호해진다.
+   (두 페이지가 하나의 페이지로 합쳐지는거니,
+    변수가 합쳐지면, 에러가 뜬다!!!)
+ 
+**액션태그 include(action tag include)
+-<jsp:include page="ex.jsp" flush="false" />
+ :컴파일이 된 이후에 합쳐진다.
+ => -ex페이지를 실행시킨 결과화면을 출력시킨다.
+    -메인화면의 변수와 ex안의 변수는 이름이 같아도 엄연히 다른 변수.
+
+=========================================================
+**EL은 ${} 중괄호/ JQuery는 $() 소괄호 ** (구분해야한다.)
+-jsp는 서블릿,, html문법이 들어가있으니까, 자바스크립트를 쓸 수 있다.
+jsp에서 jquery 문법을 사용할 수 있다.
+
+-jquery 는 jqeury만..
+
+
+EL (Expression Language)
+:EL 구문은 ${...} 내에 표현식으로 표현
+ EL은 id로 찾는다.
+ (page < request < session < application)
+ -가장 가까운 page에서부터 id를 찾는다.
+
+ *EL 연산자
+ ${empty null} -> true
+ ${empty ""} -> true
+ ${empty " "} -> false  : 공백도 아스키코드값이 있다.
