@@ -1,6 +1,11 @@
 package edu.ssafy.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -42,7 +47,9 @@ public class MainServlet extends HttpServlet {
 		// 1. 한글처리
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html); charset=utf-8");
+		
 
+		
 		String action = request.getParameter("action");
 		if (action.equals("registmem")) {
 			service.registMem(request, response);

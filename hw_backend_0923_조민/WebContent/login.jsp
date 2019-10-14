@@ -47,7 +47,7 @@ table {
 						onclick="check()"></td>
 					<td>
 			</table>
-			<a href="RegisterMem.html">회원가입</a>
+			<a href="registermem2.html">회원가입</a>
 		</div>
 	</form>
 </body>

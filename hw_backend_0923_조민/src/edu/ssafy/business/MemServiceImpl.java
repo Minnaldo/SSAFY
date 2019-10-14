@@ -27,7 +27,7 @@ public class MemServiceImpl implements IMemService{
 		if(check) {
 			listMem(request, response);
 		}else {
-			request.getRequestDispatcher("registerMem.html").forward(request, response);
+			request.getRequestDispatcher("registermem2.html").forward(request, response);
 		}
 	}
 

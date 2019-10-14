@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import edu.ssafy.controller.DBCPConnection;
+
 public class MemManager {
 
 	private ArrayList<MemVo> list = new ArrayList<>();
@@ -27,7 +29,7 @@ public class MemManager {
 		String str = "insert into productdb(id, name, quantity, price) values(?, ?, ?, ?)";
 		boolean res = false;
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			
 			st = conn.prepareStatement(str);
 			st.setString(1, id);
@@ -51,7 +53,7 @@ public class MemManager {
 		String str = "delete from productdb where id = ?";
 		boolean res = false;
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			st = conn.prepareStatement(str);
 			st.setString(1, id);
 			st.execute();
@@ -71,7 +73,7 @@ public class MemManager {
 		String str = "update productdb set name = ?, pw = ?, quantity = ?, price = ? where id = ?";
 		boolean res = false;
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			st = conn.prepareStatement(str);
 			st.setString(1, id);
 			st.setString(2, name);
@@ -93,7 +95,7 @@ public class MemManager {
 		String q = "select * from productdb";
 		ArrayList<MemVo> list = null;
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			st = conn.prepareStatement(q);
 			rs = st.executeQuery();
 			list = new ArrayList<>();
@@ -119,7 +121,7 @@ public class MemManager {
 		String q = "select * from productdb where id = ?";
 		MemVo vo = null;
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			st = conn.prepareStatement(q);
 			st.setString(1, id);
 			rs = st.executeQuery();
@@ -143,7 +145,7 @@ public class MemManager {
 		// TODO Auto-generated method stub
 		String q = "select * from memberweb where id = ? and pw = ?";
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			st = conn.prepareStatement(q);
 			st.setString(1, id);
 			st.setString(2, pw);
@@ -163,7 +165,7 @@ public class MemManager {
 		String q = "select * from productdb";
 		ArrayList<MemVo> list = null;
 		try {
-			conn = ConnectionProxy.getConnection();
+			conn = DBCPConnection.getConnection();
 			st = conn.prepareStatement(q);
 			rs = st.executeQuery();
 			list = new ArrayList<>();
@@ -186,14 +188,7 @@ public class MemManager {
 	
 	
 	public void close() {
-		try {
-			if(rs != null) rs.close();
-			if(st != null) st.close();
-			if(conn != null) conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DBCPConnection.close(conn, st, rs);
 	}
 	
 }
